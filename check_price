@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+temp=$(curl 'https://www.amazon.in/Logitech-Multi-Device-Bluetooth-Keyboard-Black/dp/B00MUTWLW4/ref=sr_1_2?crid=UI3OE2PUP8TS&dchild=1&keywords=logitech+bluetooth+keyboard&qid=1617995794&sprefix=logitech+bluetooth+keybo%2Caps%2C317&sr=8-2' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:87.0) Gecko/20100101 Firefox/87.0')
+price=$(echo "$temp" | pup 'span#priceblock_ourprice' text{} | sed 's/^..//g' | cut -d. -f1)
+if [[ $price < 2300 ]]; then
+	notify-send "Low Price Alert: Logitech keyboard"
+	echo "if condition is true"
+else
+	notify-send $price" High Now"
+fi
+

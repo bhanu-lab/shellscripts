@@ -1,0 +1,39 @@
+#!/bin/bash
+
+val=""
+icon=""
+status=$(acpi | gawk '{ print $3 }' | sed 's/,//g')
+batt=$(acpi | awk '{ print $4 }' | sed 's/%//g' | sed 's/,//g')
+
+#echo $batt
+
+if [ $status != "Discharging" ];
+then
+	echo "🤓 $batt%"	
+else
+	if [[ "$batt" -ge 80 ]];
+	then
+		echo "🙂 $batt%"
+	elif [[ "$batt" -ge 60 ]] && [[ "$batt" -lt 80 ]];
+	then
+		echo "🙂 $batt%"
+	elif [[ "$batt" -ge 40 ]] && [[ "$batt" -lt 60 ]];
+	then
+		echo "🤔 $batt%"
+	elif [[ "$batt" -ge 20 ]] && [[ "$batt" -lt 40 ]];
+	then
+		echo "😕 $batt%"
+	elif [[ "$batt" -ge 10 ]] && [[ "$batt" -lt 20 ]];
+	then
+		echo "😏 $batt%"
+	elif [[ "$batt" -ge 5 ]] && [[ "$batt" -lt 10 ]];
+	then
+		echo "😨 $batt%"
+	elif [[ "$batt" -ge 1 ]] && [[ "$batt" -lt 5 ]];
+	then
+		echo "😭 $batt%"
+	else
+		echo $batt
+	fi
+fi
+

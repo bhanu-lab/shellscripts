@@ -1,0 +1,29 @@
+#!/bin/bash
+
+val=""
+status=$(acpi | gawk '{ print $3 }')
+batt=$(acpi | gawk '{ print $4 }' | sed 's/,//g')
+
+# if battery above 80% select fire icon
+if [ $batt > 80 ];
+then
+	echo "😂 $batt"
+elif [ $batt > 60 ];
+then
+	echo "🙂 $batt"
+elif [ $batt > 40 ];
+then
+	echo "🤔 $batt"
+elif [ $batt > 20 ];
+then
+	echo "😕 $batt"
+elif [ $batt > 10 ];
+then
+	echo "☹️" $batt
+elif [ $batt > 5 ];
+then
+	echo "😨 $batt"
+elif [ $batt > 1 ];
+then
+	echo "😭 $batt"
+fi	

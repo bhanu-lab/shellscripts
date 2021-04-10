@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+query=$(dmenu -i -p 'Search YT:')
+echo -e "got query"
+options=ytfzf -s query
+echo "got options"
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -p 'Select Video:' "${@}")
+echo "got choice"
+ytfzf -t choice
