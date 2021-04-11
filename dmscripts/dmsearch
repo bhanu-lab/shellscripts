@@ -16,7 +16,7 @@ DMBROWSER="${BROWSER:-brave}"
 # The url format must allow for the search keywords at the end of the url.
 # For example: https://www.amazon.com/s?k=XXXX searches Amazon for 'XXXX'.
 declare -A options
-options[amazon]="https://www.amazon.com/s?k="
+options[amazon]="https://www.amazon.in/s?k="
 options[bbcnews]="https://www.bbc.co.uk/search?q="
 options[cnn]="https://www.cnn.com/search?q="
 options[debianpkg]="https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords="
