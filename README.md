@@ -1,3 +1,3 @@
 # shellscripts
 
-Shell Scripts and dot files for configuration
+Shell Scripts and dot files
